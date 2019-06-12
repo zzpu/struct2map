@@ -13,6 +13,10 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.util.PsiUtilBase;
+import com.intellij.psi.PsiFileFactory;
 
 public class GoBuilderGeneratorAction extends AnAction {
 
@@ -25,10 +29,9 @@ public class GoBuilderGeneratorAction extends AnAction {
             return;
         }
 
-
         String selectedText = editor.getSelectionModel().getSelectedText();
 
-        Messages.showErrorDialog(project,selectedText.toString(),"Hello");
+       // Messages.showErrorDialog(project,selectedText.toString(),"Hello");
 
         StructGenerateResult structGenerateResult = StructUtil.generateStruct(selectedText);
         if (!StringUtils.isBlank(structGenerateResult.error)) {

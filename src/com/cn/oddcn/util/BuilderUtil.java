@@ -86,13 +86,15 @@ public class BuilderUtil {
             String lowerStructName = toLowerCase(structEntity.structName);
 
             strBuilder.append("\n\t ");
-
+            strBuilder.append("map[string]interface{}{");
+            strBuilder.append("\n\t ");
             for (Map.Entry<String, String> entry : structEntity.structKeyValue.entrySet()) {
                 String keyName = entry.getKey();
 
-                strBuilder.append(lowerStructName+"."+HumpToUnderline(keyName) + " = ");
+                strBuilder.append("\""+HumpToUnderline(keyName)+"\"" + " :  ,");
                 strBuilder.append("\n\t");
             }
+            strBuilder.append("}");
 
 
         }
